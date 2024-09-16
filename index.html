@@ -4,7 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spin the Wheel Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Vanilla Tilt JS for tilt effect -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <title>Sansthaein Aur Samvidhan</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 
@@ -12,33 +17,45 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            overflow: hidden;
         }
 
         body {
             font-family: 'Lato', sans-serif;
             display: flex;
-            flex-direction: column; /* Change to column layout */
+            flex-direction: column;
+            /* Change to column layout */
             justify-content: center;
             align-items: center;
-            height: 100vh;
             color: #333;
-            background-image: url("a3045c9ac0458ab9a5fc14b6e5fd341f.jpg");
+            background-color: #0c1727;
             background-size: cover;
             background-repeat: no-repeat;
         }
 
         h1 {
-            font-size: 36px;
-            color: #ecf0f1;
+            font-size: 60px;
+            background: linear-gradient(to right, #b16ce4,
+                    #f799a8);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
             margin-bottom: 10px;
             margin-top: 40px;
         }
 
         h2 {
             font-size: 24px;
-            color: #3498db;
+            color: #ffffff;
             margin-bottom: 30px;
+        }
+
+        .center-image {
+            display: block;
+            margin: 20px auto;
+
+            /* Adjust the margin as needed */
+            max-width: 100%;
+            height: 55vh;
+            margin-bottom: 50px;
         }
 
         .container {
@@ -111,14 +128,13 @@
         }
 
         #prompt {
-            font-style: italic;
             font-size: 18px;
             line-height: 1.5;
             color: #34495e;
         }
 
         #result-dialog {
-            color: #35265f;
+            color: #35265f00;
             display: none;
             position: fixed;
             top: 50%;
@@ -128,8 +144,8 @@
             backdrop-filter: blur(20px);
             padding: 50px;
             border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            z-index: 100;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0);
+            z-index: -999;
             font-size: 20px;
         }
 
@@ -143,7 +159,7 @@
             margin-top: 20px;
             padding: 10px 20px;
             background-color: #3498db;
-            color: #ecf0f1;
+            color: #ecf0f100;
             border: none;
             border-radius: 5px;
             font-size: 16px;
@@ -175,10 +191,11 @@
 
         @media (max-width: 768px) {
             * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
             body {
                 flex-direction: column;
                 padding: 20px;
@@ -203,8 +220,8 @@
             }
 
             #wheel-container {
-                width: 300px;
-                height: 300px;
+                width: 200px;
+                height: 200px;
             }
 
             #result-dialog {
@@ -224,10 +241,11 @@
 
         @media (max-width: 480px) {
             * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
             h1 {
                 padding: 5px;
                 font-size: 16px;
@@ -244,8 +262,8 @@
             }
 
             #wheel-container {
-                width: 300px;
-                height: 300px;
+                width: 200px;
+                height: 200px;
             }
 
             #spin {
@@ -269,12 +287,93 @@
             }
 
         }
+
+        /* From Uiverse.io by vinodjangid07 */
+        .Btn-Container {
+            display: flex;
+            width: 200px;
+            height: fit-content;
+            background-color: #1d2129;
+            border-radius: 40px;
+            box-shadow: 0px 5px 10px #bebebe;
+            justify-content: space-between;
+            align-items: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .icon-Container {
+            width: 60px;
+            height: 60px;
+            background-color: #f59aff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 3px solid #1d2129;
+        }
+
+        .text {
+            width: calc(170px - 45px);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1em;
+            letter-spacing: 1.2px;
+        }
+
+        .icon-Container svg {
+            transition-duration: 1.5s;
+        }
+
+        .Btn-Container:hover .icon-Container svg {
+            transition-duration: 1.5s;
+            animation: arrow 1s linear infinite;
+        }
+
+        @keyframes arrow {
+            0% {
+                opacity: 0;
+                margin-left: 0px;
+            }
+
+            100% {
+                opacity: 1;
+                margin-left: 10px;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <h1>Welcome to the Spin the Wheel Game!</h1>
-    <h2>Spin and Discover Fun Facts</h2>
+    <h1>Sansthaein Aur Samvidhan</h1>
+    <h2>Spin and Discover Facts in Our Constitution</h2>
+
+    <!-- Apply the fade-down and tilt effects to the image -->
+    <div data-aos="fade-down" class="Tilt" >
+        <img src="hola.png" alt="Constitution Image" class="center-image" style="width: 100%;">
+    </div>
+    <button class="Btn-Container" id="scrollToWheel">
+        <span class="text">LET'S PLAY</span>
+        <span class="icon-Container">
+            <svg width="16" height="19" viewBox="0 0 16 19" fill="nones" xmlns="http://www.w3.org/2000/svg">
+                <!-- SVG content as provided -->
+                <circle cx="1.61321" cy="1.61321" r="1.5" fill="black"></circle>
+                <circle cx="5.73583" cy="1.61321" r="1.5" fill="black"></circle>
+                <circle cx="5.73583" cy="5.5566" r="1.5" fill="black"></circle>
+                <circle cx="9.85851" cy="5.5566" r="1.5" fill="black"></circle>
+                <circle cx="9.85851" cy="9.5" r="1.5" fill="black"></circle>
+                <circle cx="13.9811" cy="9.5" r="1.5" fill="black"></circle>
+                <circle cx="5.73583" cy="13.4434" r="1.5" fill="black"></circle>
+                <circle cx="9.85851" cy="13.4434" r="1.5" fill="black"></circle>
+                <circle cx="1.61321" cy="17.3868" r="1.5" fill="black"></circle>
+                <circle cx="5.73583" cy="17.3868" r="1.5" fill="black"></circle>
+            </svg>
+        </span>
+    </button>
+
     <div class="container">
         <div class="column">
             <div id="wheel-container">
@@ -290,9 +389,8 @@
         </div>
     </div>
     <div id="result-dialog">
-        <h2>Result</h2>
+        <h2> </h2>
         <p id="dialog-result"></p>
-        <button onclick="closeDialog()">Close</button>
     </div>
 
     <script>
@@ -304,14 +402,14 @@
         const dialogResult = document.getElementById('dialog-result');
 
         const sectors = [
-            { color: "#9e9402", text: "#333333", label: "Fact 1" },
-            { color: "#ff6347", text: "#ffffff", label: "Fact 2" },
-            { color: "#4169e1", text: "#ffffff", label: "Fact 3" },
-            { color: "#32cd32", text: "#000000", label: "Fact 4" },
-            { color: "#ff69b4", text: "#333333", label: "Fact 5" },
-            { color: "#8a2be2", text: "#ffffff", label: "Fact 6" },
-            { color: "#00ced1", text: "#333333", label: "Fact 7" },
-            { color: "#ffa500", text: "#333333", label: "Fact 8" },
+            { color: "#00379e", text: "#ffffff", label: "Fact 1" },
+            { color: "#001235", text: "#ffffff", label: "Fact 2" },
+            { color: "#00379e", text: "#ffffff", label: "Fact 3" },
+            { color: "#001235", text: "#ffffff", label: "Fact 4" },
+            { color: "#00379e", text: "#ffffff", label: "Fact 5" },
+            { color: "#001235", text: "#ffffff", label: "Fact 6" },
+            { color: "#00379e", text: "#ffffff", label: "Fact 7" },
+            { color: "#001235", text: "#ffffff", label: "Fact 8" },
         ];
 
         const prompts = [
@@ -395,7 +493,7 @@
 
         function showRandomPrompt(result) {
             const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
-            promptElement.innerHTML = `<strong>${result}</strong><br>${randomPrompt}`;
+            promptElement.innerHTML = `<strong>Fact</strong><br>${randomPrompt}`;
         }
 
         // Initialize
@@ -404,6 +502,24 @@
 
         // Event listeners
         spinBtn.addEventListener('click', spinWheel);
+
+        document.getElementById('scrollToWheel').addEventListener('click', function () {
+            // Scrolls smoothly to the wheel container
+            document.getElementById('wheel-container').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        AOS.init({
+            duration: 1000, // Set animation duration (in milliseconds)
+            easing: 'ease', // Easing for smooth animation
+        });
+
+        // Initialize Vanilla Tilt for 3D image effect
+        VanillaTilt.init(document.querySelector(".Tilt"), {
+            max: 25, // Maximum tilt rotation in degrees
+            speed: 400, // Speed of the tilt effect
+            // glare: true, // Optional: Add glare effect
+            "max-glare": 0.5, // Optional: Set the maximum glare level (0 to 1)
+        });
     </script>
 </body>
 
