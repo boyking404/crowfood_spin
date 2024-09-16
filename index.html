@@ -26,7 +26,6 @@
             /* Change to column layout */
             justify-content: center;
             align-items: center;
-            color: #333;
             background-color: #0c1727;
             background-size: cover;
             background-repeat: no-repeat;
@@ -344,15 +343,79 @@
                 margin-left: 10px;
             }
         }
+
+        ::-webkit-scrollbar {
+    width: 6px;
+    color: #00379e;
+    transition: all .4s ease;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00379e;
+    border-radius: 4px;
+    width: 6px;
+    transition: all .4s ease;
+}
+
+::-webkit-scrollbar-track {
+    background: #101010;
+    border-radius: 4px;
+    width: 6px;
+}
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: rgb(204, 217, 255); /* White-transparent background */
+    padding: 10px 0;
+    width: 99vw;
+    box-shadow: none; 
+}
+
+nav ul {
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+}
+
+nav ul li {
+    font-size: 18px;
+}
+
+nav ul li a {
+    color: black; /* Black text */
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+}
+
+nav ul li a:hover {
+    color: #007BFF; /* Changes text color to blue on hover */
+    transition: color 0.3s ease-in-out;
+}
+
     </style>
 </head>
+<nav>
+    <ul>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#progress-analytics">Progress Analytics</a></li>
+            </ul>
+        </nav>
+        
+    </ul>
+</nav>
 
 <body>
     <h1>Sansthaein Aur Samvidhan</h1>
     <h2>Spin and Discover Facts in Our Constitution</h2>
 
     <!-- Apply the fade-down and tilt effects to the image -->
-    <div data-aos="fade-down" class="Tilt" >
+    <div data-aos="fade-down" class="Tilt">
         <img src="hola.png" alt="Constitution Image" class="center-image" style="width: 100%;">
     </div>
     <button class="Btn-Container" id="scrollToWheel">
@@ -478,7 +541,7 @@
                 isSpinning = false;
                 wheel.classList.remove('spin-blur');
                 showResult(sectors[selectedIndex].label);
-                showRandomPrompt(sectors[selectedIndex].label);
+                showRandomPrompt(); // Show one random prompt after the spin
             }, spinDuration);
         }
 
@@ -491,14 +554,15 @@
             resultDialog.style.display = 'none';
         }
 
-        function showRandomPrompt(result) {
-            const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)];
+        // Show one random prompt after the spin
+        function showRandomPrompt() {
+            const randomPrompt = prompts[Math.floor(Math.random() * prompts.length)]; // Pick one random prompt
             promptElement.innerHTML = `<strong>Fact</strong><br>${randomPrompt}`;
         }
 
         // Initialize
         drawWheel();
-        showRandomPrompt("");
+        promptElement.innerHTML = ""; // Initially hide the prompt content
 
         // Event listeners
         spinBtn.addEventListener('click', spinWheel);
@@ -520,6 +584,7 @@
             // glare: true, // Optional: Add glare effect
             "max-glare": 0.5, // Optional: Set the maximum glare level (0 to 1)
         });
+
     </script>
 </body>
 
